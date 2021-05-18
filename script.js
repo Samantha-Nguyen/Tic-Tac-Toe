@@ -19,19 +19,25 @@ board.onclick = function () {
 const drawBoard = () => {
   boxes.forEach((box, index) => {
     let styleString = ''
+    // If the box is on top, it will add a border to the bottom
     if (index < 3) {
       styleString += 'border-bottom: 3px solid var(--white);'
     }
+    // If the box on the left, it will add a border on the right
     if (index % 3 === 0) {
       styleString += 'border-right: 3px solid var(--white);'
     }
+    // If the box is on the right, it will add a border on the right
     if (index % 3 === 2) {
       styleString += 'border-left: 3px solid var(--white);'
     }
+    // If the index is on the bottom, it will add a border to the top
     if (index > 5) {
       styleString += 'border-top: 3px solid var(--white);'
     }
+    // This will actually draw it and recognize it as a styleString
     box.style = styleString
+    // Adds an Event Listener to each box
     box.addEventListener('click', boxClicked)
   })
 }
@@ -39,7 +45,8 @@ const drawBoard = () => {
 // This logs if a box has already been clicked and checks if there is nothing in there. This makes sure that the box will not be written in if it is clicked again.
 const boxClicked = (e) => {
   const id = e.target.id
-  console.log('clicked')
+  console.log('clicked') // Logs the click in the console
+  // If there is nothing in the box and it is clicked, the space will be updated with the current player
   if (!spaces[id]) {
     spaces[id] = currentPlayer
     e.target.innerText = currentPlayer
