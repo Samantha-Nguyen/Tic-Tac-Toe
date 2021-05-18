@@ -1,9 +1,18 @@
 const boxes = Array.from(document.getElementsByClassName('box'))
 const playText = document.getElementById('playtext')
 const spaces = []
-const PLAYER_1 = 'O'
-const PLAYER_2 = 'X'
+const PLAYER_1 = 'X'
+const PLAYER_2 = 'O'
 let currentPlayer
+var count = 0
+var board = document.getElementById('gameboard')
+  
+board.onclick = function () {
+  count++
+  if (count == 9) {
+    playText.innerText = 'Tie!'
+  }
+}
 
 // This displays the playing board
 const drawBoard = () => {
@@ -97,6 +106,7 @@ const restart = () => {
   boxes.forEach((box) => {
     box.innerText = ''
   })
+  count = 0
   playText.innerText = "Let's Play!"
   currentPlayer = PLAYER_1
 }
