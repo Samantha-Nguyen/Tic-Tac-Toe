@@ -1,8 +1,8 @@
 const boxes = Array.from(document.getElementsByClassName('box'))
-const playText = document.getElementById('playText')
+const playText = document.getElementById('playtext')
 const spaces = []
-const PLAYER_1 = "O"
-const PLAYER_2 = "X"
+const PLAYER_1 = 'O'
+const PLAYER_2 = 'X'
 let currentPlayer
 
 // This displays the playing board
@@ -12,10 +12,10 @@ const drawBoard = () => {
     if (index < 3) {
       styleString += 'border-bottom: 3px solid var(--white);'
     }
-    if (index % 3 == 0) {
+    if (index % 3 === 0) {
       styleString += 'border-right: 3px solid var(--white);'
     }
-    if (index % 3 == 2) {
+    if (index % 3 === 2) {
       styleString += 'border-left: 3px solid var(--white);'
     }
     if (index > 5) {
@@ -34,58 +34,55 @@ const boxClicked = (e) => {
     spaces[id] = currentPlayer
     e.target.innerText = currentPlayer
 
-// If a player has won, the "Let's Play!" text will change to write that they have won.
+    // If a player has won, the "Let's Play!" text will change to write that they have won.
     if (playerHasWon()) {
       playText.innerText = `${currentPlayer} has won!`
       return
     }
 
-    if (boxClicked) {
-
-    }
-// This line will update the current player each time they make a move.
-    currentPlayer = currentPlayer == PLAYER_1 ? PLAYER_2 : PLAYER_1
+    // This line will update the current player each time they make a move.
+    currentPlayer = currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1
   }
 }
 
 // This checks how a player can win. All the ways a player can win are noted down here.
 const playerHasWon = () => {
-  if (spaces[0] == currentPlayer) {
-    if (spaces[1] == currentPlayer && spaces[2] == currentPlayer) {
+  if (spaces[0] === currentPlayer) {
+    if (spaces[1] === currentPlayer && spaces[2] === currentPlayer) {
       console.log(`${currentPlayer} wins up top.`)
       return true
     }
-    if (spaces[3] == currentPlayer && spaces[6] == currentPlayer) {
+    if (spaces[3] === currentPlayer && spaces[6] === currentPlayer) {
       console.log(`${currentPlayer} wins on the left.`)
       return true
     }
-    if (spaces[4] == currentPlayer && spaces[8] == currentPlayer) {
+    if (spaces[4] === currentPlayer && spaces[8] === currentPlayer) {
       console.log(`${currentPlayer} wins diagonally from top left to bottom right.`)
       return true
     }
   }
-  if (spaces[8] == currentPlayer) {
-    if (spaces[2] == currentPlayer && spaces[5] == currentPlayer) {
+  if (spaces[8] === currentPlayer) {
+    if (spaces[2] === currentPlayer && spaces[5] === currentPlayer) {
       console.log(`${currentPlayer} wins on the right.`)
       return true
     }
-    if (spaces[6] == currentPlayer && spaces[7] == currentPlayer) {
+    if (spaces[6] === currentPlayer && spaces[7] === currentPlayer) {
       console.log(`${currentPlayer} wins on the bottom.`)
       return true
     }
   }
-  if (spaces[4] == currentPlayer) {
-    if (spaces[1] == currentPlayer && spaces[7] == currentPlayer) {
+  if (spaces[4] === currentPlayer) {
+    if (spaces[1] === currentPlayer && spaces[7] === currentPlayer) {
       console.log(`${currentPlayer} wins vertically in the middle.`)
       return true
     }
-    if (spaces[3] == currentPlayer && spaces[5] == currentPlayer) {
+    if (spaces[3] === currentPlayer && spaces[5] === currentPlayer) {
       console.log(`${currentPlayer} wins horizontally in the middle.`)
       return true
     }
   }
-  if (spaces[2] == currentPlayer) {
-    if (spaces[4] == currentPlayer && spaces[6] == currentPlayer) {
+  if (spaces[2] === currentPlayer) {
+    if (spaces[4] === currentPlayer && spaces[6] === currentPlayer) {
       console.log(`${currentPlayer} wins diagonally from top right to bottom left.`)
       return true
     }
@@ -105,7 +102,7 @@ const restart = () => {
 }
 
 // This makes the "Play Again" button ACTUALLY work.
-restartBtn.addEventListener('click', restart)
+document.getElementById('restartbtn').addEventListener('click', restart)
 
 restart()
 drawBoard()
