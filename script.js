@@ -12,6 +12,7 @@ board.onclick = function () {
   count++
   if (count === 9) {
     playText.innerText = 'Tie!'
+    console.log('Tie game.')
   }
 }
 
