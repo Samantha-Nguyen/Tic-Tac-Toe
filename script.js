@@ -51,7 +51,7 @@ const boxClicked = (e) => {
     spaces[id] = currentPlayer
     e.target.innerText = currentPlayer
 
-    // If a player has won, the "Let's Play!" text will change to write that they have won.
+    // If a player has won, the "(currentPlayer)Turn" text will change to write that they have won.
     if (playerHasWon()) {
       playText.innerText = `${currentPlayer} has won!`
       return
@@ -59,6 +59,7 @@ const boxClicked = (e) => {
 
     // This line will update the current player each time they make a move.
     currentPlayer = currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1
+    playText.innerHTML = `${currentPlayer}'s Turn`
   }
 }
 
@@ -106,7 +107,7 @@ const playerHasWon = () => {
   }
 }
 
-// This restarts the game by clearing all the boxes and resetting the title to "Let's Play".
+// This restarts the game by clearing all the boxes and resetting the title to "X's Turn".
 const restart = () => {
   spaces.forEach((space, index) => {
     spaces[index] = null
@@ -115,7 +116,7 @@ const restart = () => {
     box.innerText = ''
   })
   count = 0
-  playText.innerText = "Let's Play!"
+  playText.innerText = "X's Turn"
   currentPlayer = PLAYER_1
 }
 
