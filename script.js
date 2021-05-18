@@ -6,7 +6,9 @@ const PLAYER_2 = 'O'
 let currentPlayer
 var count = 0
 var board = document.getElementById('gameboard')
-  
+
+
+// This counts how many times the game board is clicked and at the 9th click, it will recognize it as a tie and tell the users
 board.onclick = function () {
   count++
   if (count == 9) {
@@ -38,7 +40,7 @@ const drawBoard = () => {
 // This logs if a box has already been clicked and checks if there is nothing in there. This makes sure that the box will not be written in if it is clicked again.
 const boxClicked = (e) => {
   const id = e.target.id
-  console.log('id')
+  console.log('clicked')
   if (!spaces[id]) {
     spaces[id] = currentPlayer
     e.target.innerText = currentPlayer
@@ -47,6 +49,13 @@ const boxClicked = (e) => {
     if (playerHasWon()) {
       playText.innerText = `${currentPlayer} has won!`
       return
+    board.onclick = function () {
+    count++
+   if (count == 9) {
+    playText.innerText = 'Tie!'
+  }
+}
+
     }
 
     // This line will update the current player each time they make a move.
