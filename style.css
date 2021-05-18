@@ -6,10 +6,12 @@
 
 :root {
   --white: #fff;
+  --blue: #39f;
+  --red: #f00;
 }
 
 body {
-  background-color: #39f;
+  background-color: var(--blue);
   margin: 0;
   padding: 0;
   color: var(--white);
@@ -31,10 +33,11 @@ body {
   cursor: pointer;
   background-color: transparent;
   font-family: 'Comfortaa', cursive;
+  text-transform: uppercase;
 }
 
 #restartBtn:hover {
-  background-color: #fff;
+  background-color: var(--white);
   color: #000;
 }
 
@@ -62,4 +65,5 @@ body {
   align-items: center;
   color: var(--white);
   font-size: 150px;
+  font-family: 'Comfortaa', cursive;
 }
